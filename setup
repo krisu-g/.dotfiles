@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Description: Link dotfiles to home directory
+
+mkdir -p ~/.config
+
+# problem with running symlink when starting session
+# ln -sf ~/.dotfiles/bashrc ~/.bashrc
+# ln -sf ~/.dotfiles/bash_aliases ~/.bash_aliases
+# ln -sf ~/.dotfiles/patch-bash-history.sh ~/patch-bash-history.sh
+ln -sf ~/projects/.dotfiles/vimrc ~/.vimrc
+ln -sf ~/projects/.dotfiles/starship.toml ~/.config/starship.toml
+echo "Dotfiles linked!"
+
+chmod +x $HOME/projects/.dotfiles/patch-bash-history.sh
+rm bashrc.backup*
+$HOME/projects/.dotfiles/patch-bash-history.sh $HOME/projects/.dotfiles/bashrc
+echo ".bashrc updated with patch-bash-history.sh" 

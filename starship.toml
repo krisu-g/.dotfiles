@@ -1,0 +1,133 @@
+format = """
+$username\
+$os\
+$python\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$battery\
+$line_break\
+$character"""
+
+# Ensure the line_break module is not disabled (it is enabled by default)
+[line_break]
+disabled = false
+
+add_newline = false
+command_timeout = 1000
+scan_timeout = 1000
+
+[battery]
+format = "[$symbol $percentage]($style) "
+empty_symbol = "🪫"
+charging_symbol = "🔋"
+full_symbol = '🔋'
+
+[[battery.display]]
+threshold = 10
+style = 'red'
+
+
+[character]
+error_symbol = "[✗](bold #ff5555)"
+success_symbol = "[➜](bold #50fa7b)"
+
+[cmd_duration]
+style = "bold #f1fa8c"
+
+[directory]
+format = '[$path]($style)[$read_only]($read_only_style) '
+read_only_style = 'red'
+truncate_to_repo = true
+truncation_symbol = '.../'
+style = "bold #50fa7b"
+
+[git_branch]
+style = "bold #ff79c6"
+symbol = " "
+
+[git_status]
+style = "bold #ff5555"
+disabled = false
+format = '([\[${all_status}\] ]($style))'
+
+# 2. Add a space strictly to the END of your active variables
+staged = '+${count}'
+modified = '!${count}'
+deleted = '✘${count}'
+renamed = '»${count}'
+untracked = '?${count}'
+conflicted = '=${count}'
+
+ahead = '⇡${count}'
+behind = '⇣${count}'
+diverged = '⇕${count}'
+stashed = '\$${count}'
+
+[os]
+format = "[$symbol]($style)"
+style = "bold #60bafe"
+disabled = false
+
+[os.symbols]
+AIX = "➿ "
+Alpaquita = "🔔 "
+AlmaLinux = " "        # nf-linux-almalinux
+Alpine = " "           # nf-linux-alpine
+Amazon = "🙂 "
+Android = " "          # nf-fa-android
+Arch = " "             # nf-linux-archlinux
+Artix = " "            # nf-linux-artix
+Bluefin = "🐟 "
+CachyOS = "🎗️ "
+CentOS = " "           # nf-linux-centos
+Debian = " "           # nf-linux-debian
+DragonFly = "🐉 "
+Emscripten = "🔗 "
+EndeavourOS = " "      # nf-linux-endeavour
+Fedora = " "           # nf-linux-fedora
+FreeBSD = " "          # nf-linux-freebsd
+Garuda = " "           # nf-linux-garuda
+Gentoo = " "           # nf-linux-gentoo
+HardenedBSD = "🛡️ "
+Illumos = " "          # nf-linux-illumos
+Kali = " "             # nf-linux-kali_linux
+Linux = " "            # nf-linux-tux
+Mabox = "📦 "
+Macos = " "            # nf-linux-apple
+Manjaro = " "          # nf-linux-manjaro
+Mariner = "🌊 "
+MidnightBSD = "🌘 "
+Mint = " "             # nf-linux-linuxmint
+NetBSD = "🚩 "
+NixOS = " "            # nf-linux-nixos
+Nobara = " "           # nf-linux-nobara
+OpenBSD = " "          # nf-linux-openbsd
+OpenCloudOS = "☁️ "
+openEuler = "🦉 "
+openSUSE = " "         # nf-linux-opensuse
+OracleLinux = " "      # nf-dev-oracle
+Pop = " "              # nf-linux-pop_os
+Raspbian = " "         # nf-linux-raspberry_pi
+Redhat = " "           # nf-linux-redhat
+RedHatEnterprise = " " # nf-linux-redhat
+RockyLinux = " "       # nf-linux-rocky_linux
+Redox = "🧪 "
+Solus = " "            # nf-linux-solus
+SUSE = " "             # nf-fa-suse
+Ubuntu = " "           # nf-linux-ubuntu
+Ultramarine = "🔷 "
+Unknown = "❓ "
+Uos = "🐲 "
+Void = " "             # nf-linux-void
+Windows = " "          # nf-custom-windows
+
+[package]
+disabled = true
+
+[python]
+symbol = " "
+python_binary = [["uv", "run", "--no-python-downloads", "python"]]
+format = 'via [${symbol}(${version} )(\($virtualenv\) )]($style)'
+style = "bold #f3e10b"
